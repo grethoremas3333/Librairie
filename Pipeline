@@ -1,0 +1,21 @@
+pipeline {
+  agent any 
+  stages {
+    stage('clone') { 
+       steps {
+         sh "rm -rf *"
+         sh "git clone https://github.com/grethoremas3333/JenkinsTest.git"
+       }
+   }
+    stage('build') { 
+        steps {
+         sh "cd JenkinsTest/ && javac Main.java"
+       }
+    }
+    stage('run') { 
+        steps {
+         sh "cd JenkinsTest/ && java Main"
+       }
+    }
+  }
+}
